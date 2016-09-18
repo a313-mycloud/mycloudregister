@@ -9,5 +9,6 @@ import org.springframework.stereotype.Service;
 public interface RegisterUserService {
 
 	public MyCloudResult<Boolean> createRegUser(RegisterUser user);
+	public MyCloudResult<RegisterUser> getRegUserByAccount(String account);
 	
 }

@@ -2,15 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.dlut.mycloudregister.dal.mapper.RegisterUserMapper" >
 	<resultMap id="BaseResultMap" type="org.dlut.mycloudregister.dal.dataobject.RegisterUser" >
-		<id column="account" property="account" jdbcType="VARCHAR" />
-		<result column="username" property="username" jdbcType="VARCHAR" />
-		<result column="password" property="password" jdbcType="VARCHAR" />
-		<result column="role" property="role" jdbcType="INTEGER" />
-		<result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
-		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
-		<result column="tele_num" property="teleNum" jdbcType="VARCHAR" />
-		<result column="email" property="email" jdbcType="VARCHAR" />
+		<id column="account" property="account"  />
+		<result column="username" property="username"  />
+		<result column="password" property="password"  />
+		<result column="role" property="role" />
+		<result column="gmt_create" property="gmtCreate"  />
+		<result column="gmt_modified" property="gmtModified" />
+		<result column="tele_num" property="teleNum"  />
+		<result column="email" property="email"  />
 	</resultMap>
+	
 	<sql id="Base_Column_List" >
     account, username, password, role, gmt_create, gmt_modified, tele_num, email
 	</sql>
@@ -19,21 +20,21 @@
     select 
 		<include refid="Base_Column_List" />
     from mycloud_register
-    where account = #{account,jdbcType=VARCHAR}
+    where account = #{account}
 	</select>
   
 	<delete id="delRegUserByAccount" parameterType="java.lang.String" >
     delete from mycloud_register
-    where account = #{account,jdbcType=VARCHAR}
+    where account = #{account}
 	</delete>
   
 	<insert id="createRegUser" parameterType="org.dlut.mycloudregister.dal.dataobject.RegisterUser" >
     insert into mycloud_register (account, username, password, 
       role, gmt_create, gmt_modified, 
       tele_num, email)
-    values (#{account,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{role,jdbcType=INTEGER}, now(), now(), 
-      #{teleNum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+    values (#{account}, #{username}, #{password}, 
+      #{role}, now(), now(), 
+      #{teleNum}, #{email})
 	</insert>
 	
   
@@ -41,40 +42,40 @@
     update mycloud_register
 		<set >
 			<if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
+        username = #{username},
 			</if>
 			<if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
+        password = #{password},
 			</if>
 			<if test="role != null" >
-        role = #{role,jdbcType=INTEGER},
+        role = #{role},
 			</if>
 			<if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+        gmt_create = #{gmtCreate},
 			</if>
 			<if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+        gmt_modified = #{gmtModified},
 			</if>
 			<if test="teleNum != null" >
-        tele_num = #{teleNum,jdbcType=VARCHAR},
+        tele_num = #{teleNum},
 			</if>
 			<if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
+        email = #{email},
 			</if>
 		</set>
-    where account = #{account,jdbcType=VARCHAR}
+    where account = #{account}
 	</update>
   
 	<update id="updateRegUserByAccount" parameterType="org.dlut.mycloudregister.dal.dataobject.RegisterUser" >
     update mycloud_register
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      role = #{role,jdbcType=INTEGER},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      tele_num = #{teleNum,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR}
-    where account = #{account,jdbcType=VARCHAR}
+    set username = #{username},
+      password = #{password},
+      role = #{role},
+      gmt_create = #{gmtCreate},
+      gmt_modified = #{gmtModified},
+      tele_num = #{teleNum},
+      email = #{email}
+    where account = #{account}
 	</update>
 	
 	
