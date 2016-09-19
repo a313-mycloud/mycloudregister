@@ -4,3 +4,4 @@ register.iml
 logs/*
 .idea/*
 .settings/*
+target/
