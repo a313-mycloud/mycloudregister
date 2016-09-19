@@ -27,7 +27,7 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 	}
 	
 	public MyCloudResult<RegisterUser> getRegUserByAccount(String account){
-		RegisterUser registerUser=registerUserMapper.getRegUserByAcount(account);
+		RegisterUser registerUser=registerUserMapper.getRegUserByAccount(account);
 		if(registerUser!=null)
 			return MyCloudResult.successResult(registerUser);
 		return MyCloudResult.failedResult(ErrorEnum.USER_NOT_EXIST);
