@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>MyCloud | Sign In</title>
+    <link rel="stylesheet" href="resources/css/reset.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="resources/css/invalid.css" type="text/css" media="screen"/>
+    <script type="text/javascript" src="resources/scripts/facebox.js"></script>
+    <script>
+    function isequal(str,str1){
+    	if(str!=str1){alert("两次密碼不一致");return false;}
+    		return true;
+	}
+    </script>
+</head>
+<body id="login">
+<div id="login-wrapper" class="png_bg">
+    <div id="login-top">
+        <h2 style="color:white;">注册</h2>
+    </div>
+    <!-- End #logn-top -->
+    <div id="login-content">
+
+        <form action="/register" method="post" 
+        onsubmit="javascript:return isequal(this.password.value,this.password1.value)">
+            #if ($!errorDesc)
+                <div class="notification error png_bg">
+                    <div>
+                        $!errorDesc
+                    </div>
+                </div>
+            #end
+
+            <p>
+                <label>登录账号</label>
+                <input class="text-input" type="text" value="$!registerUser.account" name="account"/>
+            </p>
+            <div class="clear"></div>
+
+            <p>
+                <label>姓名</label>
+                <input class="text-input" type="text" value="$!registerUser.username" name="username"/>
+            </p>
+            <div class="clear"></div>
+
+            <p>
+                <label>密码</label>
+                <input class="text-input" type="password" value="$!registerUser.password" name="password"/>
+            </p>
+            <div class="clear"></div>
+            
+             <p>
+                <label>确认密码</label>
+                <input class="text-input" type="password" value="$!registerUser.password" name="password1"/>
+            </p>
+            <div class="clear"></div>
+
+            <p>
+                <label>手机号码</label>
+                <input class="text-input" type="teleNum" value="$!registerUser.teleNum" name="teleNum"/>
+            </p>
+            <div class="clear"></div>
+
+            <p>
+                <label>电子邮箱</label>
+                <input class="text-input" type="email" value="$!registerUser.email" name="email"/>
+            </p>
+            <div class="clear"></div>
+
+            <div class="clear"></div>
+
+            <p>
+                <input class="button" type="submit" value="注册"/>
+            </p>
+            </fieldset>
+        </form>
+
+
+    </div>
+    <!-- End #login-content -->
+</div>
+<!-- End #login-wrapper -->
+
+
+</body>
+</html>

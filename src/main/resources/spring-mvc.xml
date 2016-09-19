@@ -11,21 +11,15 @@
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd    
 	http://www.springframework.org/schema/mvc    
 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
-	<context:component-scan base-package="org.dlut.mycloudregister"/>
+
+	<!-- 激活自动检测注解，自动搜索@Controller和@RequstMapping注解的存在，包括其下面的子包 -->
+	<context:component-scan base-package="org.dlut.mycloudregister" />
+
+	<!-- 主要作用于@Controller，激活该模式 下面是一种简写形式，完全可以手动配置替代这种简写形式； 它会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter
+		两个bean, 是spring MVC为@Controllers分发请求所必须的 -->
+	<mvc:annotation-driven />
 	
-	
-	<!-- 引入配置文件 -->  
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-		<property name="locations">
-			<list>
-				<value>classpath:*.properties</value>
-			</list>
-		</property>
-	</bean>  
-	
-	
-          
+
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
 		<property name="cache" value="true" />
@@ -46,10 +40,7 @@
 			</props>
 		</property>
 	</bean>
-	
-	<import resource="classpath:spring-mybatis.xml" />
-	<!-- 导入远程服务配置文件 -->
-	<import resource="consume/*.xml"/>
+
 </beans>  
 
 
