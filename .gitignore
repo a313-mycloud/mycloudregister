@@ -2,6 +2,8 @@
 .project
 register.iml
 logs/*
-.idea/*
+.idea/
+.settings/
+logs/
 .settings/*
 target/

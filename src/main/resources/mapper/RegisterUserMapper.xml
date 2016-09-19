@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.dlut.mycloudregister.dal.mapper.RegisterUserMapper" >
-	<resultMap id="BaseResultMap" type="RegisterUser" >
-		<result column="account" property="account"  />
-		<result column="username" property="username"  />
-		<result column="password" property="password"  />
-		<result column="role" property="role" />
-		<result column="gmt_create" property="gmtCreate"  />
-		<result column="gmt_modified" property="gmtModified" />
-		<result column="tele_num" property="teleNum"  />
-		<result column="email" property="email"  />
-	</resultMap>
-	
-	<sql id="Base_Column_List" >
+<mapper namespace="org.dlut.mycloudregister.dal.mapper.RegisterUserMapper">
+    <resultMap id="BaseResultMap" type="RegisterUser">
+        <result column="account" property="account"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="role" property="role"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="tele_num" property="teleNum"/>
+        <result column="email" property="email"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
     account, username, password, role, gmt_create, gmt_modified, tele_num, email
 	</sql>
-  
-	<select id="getRegUserByAcount" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-		<include refid="Base_Column_List" />
-    from mycloud_register
-    where account = #{account}
-	</select>
-  
-	<delete id="delRegUserByAccount" parameterType="java.lang.String" >
-    delete from mycloud_register
-    where account = #{account}
-	</delete>
-  
-	<insert id="createRegUser" parameterType="org.dlut.mycloudregister.dal.dataobject.RegisterUser" >
+
+    <select id="getRegUserByAccount" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from mycloud_register
+        where account = #{account}
+    </select>
+
+
+    <insert id="createRegUser">
     insert into mycloud_register (account, username, password, 
       role, gmt_create, gmt_modified, 
       tele_num, email)
@@ -36,48 +32,5 @@
       #{role}, now(), now(), 
       #{teleNum}, #{email})
 	</insert>
-	
-  
-	<update id="updateRegUserByAccountSelective" parameterType="org.dlut.mycloudregister.dal.dataobject.RegisterUser" >
-    update mycloud_register
-		<set >
-			<if test="username != null" >
-        username = #{username},
-			</if>
-			<if test="password != null" >
-        password = #{password},
-			</if>
-			<if test="role != null" >
-        role = #{role},
-			</if>
-			<if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate},
-			</if>
-			<if test="gmtModified != null" >
-        gmt_modified = #{gmtModified},
-			</if>
-			<if test="teleNum != null" >
-        tele_num = #{teleNum},
-			</if>
-			<if test="email != null" >
-        email = #{email},
-			</if>
-		</set>
-    where account = #{account}
-	</update>
-  
-	<update id="updateRegUserByAccount" parameterType="org.dlut.mycloudregister.dal.dataobject.RegisterUser" >
-    update mycloud_register
-    set username = #{username},
-      password = #{password},
-      role = #{role},
-      gmt_create = #{gmtCreate},
-      gmt_modified = #{gmtModified},
-      tele_num = #{teleNum},
-      email = #{email}
-    where account = #{account}
-	</update>
-	
-	
-  
+
 </mapper>
