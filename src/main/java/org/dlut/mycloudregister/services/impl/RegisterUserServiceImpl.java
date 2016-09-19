@@ -2,7 +2,6 @@ package org.dlut.mycloudregister.services.impl;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang3.StringUtils;
 import org.dlut.mycloudregister.dal.dataobject.RegisterUser;
 import org.dlut.mycloudregister.dal.mapper.RegisterUserMapper;
 import org.dlut.mycloudregister.services.RegisterUserService;
